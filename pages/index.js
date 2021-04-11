@@ -14,21 +14,21 @@ export default function Home() {
                 <div className="bg-gray-800 md:w-screen md:p-10 flex flex-col md:items-center md:justify-center">
                     <Card
                         title="Andrew Jones"
-                        subtitle={<span>Frontend developer with a specialty in research & development and project management. <a href='Andrew Jones Resume.pdf'>Download my resume!</a></span>}
+                        subtitle={<span>Frontend developer with a specialty in research & development and project management. <a href='Andrew Jones Resume.pdf'>Download my resume</a> to learn about my experience, skills, and interests.</span>}
                         sidebar={
                             <div>
-                                <br/>
+                                <br />
                                 <p>Stevens Institute of Technology</p>
                                 <p>B.E. Software Engineering</p>
                                 <p>(expected) May 2022</p>
-                                <br/>
-                                <p><img src={"mail.svg"} alt={"Email Address"} width="20px" style={{display: "inline-block", marginRight: 8}}/>  <a href="mailto:aej11@outlook.com">aej11@outlook.com</a></p>
-                                <p><img src={"phone.svg"} alt={"Phone Number"} width="20px" style={{display: "inline-block", marginRight: 8}}/> <a href="tel:9738300931">973-830-0931</a></p>
+                                <br />
+                                <p><img src={"mail.svg"} alt={"Email Address"} width="20px" style={{ display: "inline-block", marginRight: 8 }} />  <a href="mailto:aej11@outlook.com">aej11@outlook.com</a></p>
+                                <p><img src={"phone.svg"} alt={"Phone Number"} width="20px" style={{ display: "inline-block", marginRight: 8 }} /> <a href="tel:9738300931">973-830-0931</a></p>
                             </div>
                         }
                         id="intro"
                         picAlt="My Profile Picture"
-                        picSrc="prof_pic_sanfran.jpg"
+                        picSrc="avatar.png"
                         content={
                             <>
                                 <h2>Skills: </h2>
