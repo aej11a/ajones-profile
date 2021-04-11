@@ -1,13 +1,17 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Head from 'next/head'
 import Confetti from 'react-dom-confetti';
+import { motion } from "framer-motion"
+import Link from 'next/link'
+
+
 
 export default function Home() {
     return (
         <div className="container">
             <Head>
                 <title>Andrew Jones</title>
-                <link rel="icon" href="/favicon.ico"/>
+                <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <main>
@@ -31,62 +35,39 @@ export default function Home() {
                         picSrc="avatar.png"
                         content={
                             <>
-                                <h2>Skills: </h2>
-                                <div className="flex flex-wrap">
-                                    <Technology linkId="">ReactJS</Technology>
-                                    <Technology linkId="">NextJS</Technology>
-                                    <Technology linkId="">React Native</Technology>
-                                    <Technology linkId="">Node.js</Technology>
-                                    <Technology linkId="">REST APIs</Technology>
-                                    <Technology linkId="">GraphQL</Technology>
-                                    <Technology linkId="">TailwindCSS</Technology>
-                                    <Technology linkId="">Unreal Engine 4</Technology>
-                                    <Technology linkId="">Swift</Technology>
-                                    <Technology linkId="">Java</Technology>
-                                    <Technology linkId="">Python</Technology>
-                                    <Technology linkId="">Agile</Technology>
-                                    <Technology linkId="">Documentation</Technology>
-                                    <Technology linkId="">CSS</Technology>
-                                    <Technology linkId="">Data Analysis</Technology>
-                                </div>
-                                <br/>
-                                <h2>Interests: </h2>
-                                <div className="flex flex-wrap">
-                                    <Technology linkId="">Baking</Technology>
-                                    <Technology linkId="">Cooking</Technology>
-                                    <Technology linkId="">Photography</Technology>
-                                    <Technology linkId="">Movies</Technology>
-                                    <Technology linkId="">Running</Technology>
-                                    <Technology linkId="">History</Technology>
-                                    <Technology linkId="">3D-Printing</Technology>
-                                    <Technology linkId="">Programming</Technology>
-                                </div>
+                                <h2>
+                                    Recent Blog Posts
+                                </h2>
+                                <ul style={{ listStyle: "none" }}>
+                                    <li><Link href="/blog/time-management">Work Smart AND Hard</Link>: How I Manage my Time Working a Full-Time Job and Studying as a Full-Time Student</li>
+                                    <li><Link href="/blog/houdini"><motion.span layoutId="houdini">Animated Backgrounds with the CSS Houdini Paint API</motion.span></Link></li>
+                                </ul>
                             </>
                         }
                     />
-                    <br/>
+                    <br />
                     <Card
                         title="Software Engineer @ Corra"
-                        subtitle="Front-end Development internship where I took a leadership role."
+                        subtitle="Comprehensive internship where I develop software, train developers, manage a product, and design solutions."
                         id="corra"
                         picAlt="A sample e-commerce PWA developed at Corra"
                         picSrc="elemis.PNG"
                         content={
-                            <>
+                            <div>
                                 <p>
                                     Despite starting as an intern, I took the Progressive Web Application concept all the way from an idea to a major movement within our company and clientele.
                                     I developed prototypes, trained developers, advocated for the project across our org, and more.
-                                    <br/>
-                                    <br/>
+                                    <br />
+                                    <br />
                                     See <a href='Andrew Jones Resume.pdf'>my resume</a> for more info!
                                 </p>
-                                <br/>
+                                <br />
                                 <p><a href="https://corra.com/fwrd-headless-pwa/">FWRD</a>, the accelerator I led development of.</p>
                                 <p><a hred="https://corra.com/ourwork/elemis">Case study</a> on one of our clients.</p>
-                            </>
+                            </div>
                         }
                     />
-                    <br/>
+                    <br />
                     <Card
                         title="COVID-19 Research"
                         id="covid"
@@ -97,7 +78,7 @@ export default function Home() {
                                 <Technology disableConfetti>JavaScript</Technology>
                                 <Technology disableConfetti>React</Technology>
                                 <Technology disableConfetti>Data Analysis</Technology>
-                                <br/><br/>
+                                <br /><br />
                                 <p>
                                     I led a research project on the system dynamics of the global spread of COVID-19, which culminated in a
                                     research paper that was published in an Elsevier journal.
@@ -108,7 +89,7 @@ export default function Home() {
                             </>
                         }
                     />
-                    <br/>
+                    <br />
                     <Card
                         title="ShareSheets"
                         id="sharesheets"
@@ -118,7 +99,7 @@ export default function Home() {
                             <>
                                 <Technology disableConfetti>React Native</Technology>
                                 <Technology disableConfetti>App Development</Technology>
-                                <br/><br/>
+                                <br /><br />
                                 <p>
                                     ShareSheets allows users to share their contact information and social media
                                     accounts by creating and scanning QR codes.
@@ -131,7 +112,7 @@ export default function Home() {
                             </>
                         }
                     />
-                    <br/>
+                    <br />
                     <Card
                         title="Mars Weather Widgets"
                         id="mars"
@@ -142,7 +123,7 @@ export default function Home() {
                                 <Technology disableConfetti>SwiftUI</Technology>
                                 <Technology disableConfetti>REST API</Technology>
                                 <Technology disableConfetti>App Development</Technology>
-                                <br/><br/>
+                                <br /><br />
                                 <p>
                                     I developed this app to learn about SwiftUI and iOS Widgets. It allows users to view the weather on Mars on
                                     their iOS homescreen, and also has widgets which just display Mars photography.
@@ -153,7 +134,7 @@ export default function Home() {
                             </>
                         }
                     />
-                    <br/>
+                    <br />
                     <Card
                         title="Weatherer"
                         id="weatherer"
@@ -165,7 +146,7 @@ export default function Home() {
                                 <Technology disableConfetti>NextJS</Technology>
                                 <Technology disableConfetti>Static-Site Generation</Technology>
                                 <Technology disableConfetti>CSS</Technology>
-                                <br/><br/>
+                                <br /><br />
                                 <p>
                                     Weatherer is a NextJS site featuring static site generation, with page revalidation.
                                     This means that even if <b>1000 people request</b> the weather for the same zip code
@@ -179,7 +160,7 @@ export default function Home() {
                             </>
                         }
                     />
-                    <br/>
+                    <br />
                     <Card
                         title="Space Station: Run"
                         id="spacestationrun"
@@ -189,7 +170,7 @@ export default function Home() {
                             <>
                                 <Technology disableConfetti>Unreal Engine 4</Technology>
                                 <Technology disableConfetti>App Development</Technology>
-                                <br/><br/>
+                                <br /><br />
                                 <p>
                                     Space Station: Run is an endless-runner iOS game, with a unique anti-gravity
                                     mechanic.
@@ -210,8 +191,8 @@ export default function Home() {
     )
 }
 
-const Card = ({title, subtitle, content, picSrc, picAlt, id, sidebar}) => (
-    <div className="md:w-3/5 items-center flex shadow-xl" id={id}>
+export const Card = ({ title, subtitle, content, picSrc, picAlt, id, sidebar }) => (
+    <motion.div className="md:w-3/5 items-center flex shadow-xl" id={id} layoutId={"card_" + title.replace("\s", "-")}>
         <div className="bg-gray-200 rounded-lg flex flex-col md:flex-row w-full">
             <div className="m-6 md:w-3/5 xl:w-4/5">
                 <h1 className="border-b-2 mb-4 border-gray-800 p-4 pl-0 pt-0 m-1">{title}</h1>
@@ -219,15 +200,15 @@ const Card = ({title, subtitle, content, picSrc, picAlt, id, sidebar}) => (
                 {content}
             </div>
             <div className="md:h-full md:w-2/5">
-            <picture>
-                <img src={picSrc} alt={picAlt} className="md:object-scale-down w-full md:w-100 md:rounded-r-md"
-                     style={{maxWidth: 'unset'}}/>
-            </picture>
+                <picture>
+                    <img src={picSrc} alt={picAlt} className="md:object-scale-down w-full md:w-100 md:rounded-r-md"
+                        style={{ maxWidth: 'unset' }} />
+                </picture>
                 {sidebar}
             </div>
         </div>
 
-    </div>
+    </motion.div>
 )
 
 const config = {
@@ -244,7 +225,7 @@ const config = {
     colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"]
 };
 
-const Technology = ({children, linkId, disableConfetti}) => {
+export const Technology = ({ children, linkId, disableConfetti }) => {
 
     const [randomColor, setRandomColor] = useState(getRandomColor())
     const [confettiActive, setConfettiActive] = useState(false)
@@ -257,9 +238,9 @@ const Technology = ({children, linkId, disableConfetti}) => {
 
     return (
         <span onMouseOver={resetColor}
-           className={`border-r-2 border-gray-400 transition-all ease-in-out duration-200 no-underline my-1 px-2 text-xl text-gray-800 font-semibold tracking-wide hover:text-${randomColor}-600`}
-           href={"#" + linkId}>
-            {!disableConfetti && <Confetti active={confettiActive} config={config}/>}
+            className={`border-r-2 border-gray-400 transition-all ease-in-out duration-200 no-underline my-1 px-2 text-xl text-gray-800 font-semibold tracking-wide hover:text-${randomColor}-600`}
+            href={"#" + linkId}>
+            {!disableConfetti && <Confetti active={confettiActive} config={config} />}
             {children}
         </span>
     )

@@ -1,0 +1,32 @@
+{
+    "cards": [
+        {
+            "id": "",
+            "title": "",
+            "subtitle": "",
+            "picAlt": "",
+            "picSrc": "",
+            "content":"",
+            "links": [
+                {
+                    "text": "",
+                    "link": ""
+                }
+            ]
+        },
+        {
+            "id": "",
+            "title": "",
+            "subtitle": "",
+            "picAlt": "",
+            "picSrc": "",
+            "content":"",
+            "links": [
+                {
+                    "text": "",
+                    "link": ""
+                }
+            ]
+        }
+    ]
+}

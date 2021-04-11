@@ -1,0 +1,191 @@
+# Animated Backgrounds with the CSS Houdini Paint API
+CSS Houdini is a set of low-level APIs which allow developers more control over rendering than ever before. It allows us to write JavaScript to control parts of the DOM rendering process. You can find a full list of APIs and information about them [here](https://developer.mozilla.org/en-US/docs/Web/Houdini). One of the Houdini APIs is the Paint API, which lets us write JavaScript to programmatically create images. Some examples can be found at [Houdini.how](https://houdini.how/) and an introduction to the API can be found on CSS-Tricks [here](https://css-tricks.com/the-css-paint-api/).
+
+You might have noticed that all of the examples on [Houdini.how](https://houdini.how/) only show static background images - but we can change that! In this article, we’ll learn how to use simple, native CSS transitions to animate Paint API images.
+
+/more
+
+
+    **Heads up!** Make sure you’re using a browser which supports the Paint API and the Properties and Values API, such as Chrome or Edge. [Check browser support here](https://ishoudinireadyyet.com/).
+# A Safe Setup
+
+Instead of going into detail on how to create a Paint worklet, we’ll use one of the examples on [Houdini.how](https://houdini.how/) as a starter. One great aspect of Paint worklets is that they’re modular and reusable.
+
+Add some text element to your HTML, like an `<h1>`. Then add this `<``script``>` tag to your HTML to tell the browser to download the Paint worklet:
+
+
+    <h1>Hello World!</h1>
+    
+    <script src='https://unpkg.com/extra.css/superUnderline.js'></script>
+
+In our CSS, we can now apply the rule `background: paint(extra-superUnderline)`. However, we should use the `@supports` rule in our CSS so that we can safely use CSS Houdini, since it’s not supported in some browsers. This results in the following CSS:
+
+
+    @supports (background: paint(extra-superUnderline)) {
+      h1 {
+        background: paint(extra-superUnderline);
+      }
+    }
+
+I’m also going to add the `line-height: 1.5;` rule to space out the underline.
+
+In your browser, you should see something like this:
+
+
+![](https://paper-attachments.dropbox.com/s_23AB5AA2479554ADB106A9A7BACF816F77AFE471478AA233FD476DDF686D2D1A_1610678524975_image.png)
+
+
+Now we’re ready to start customizing! 
+
+
+## Animating Paint Properties
+
+The `extra-superUnderline` worklet allows us to style properties of the underlines by defining specific custom properties on the element. **We can use a standard CSS transition to animate those properties.**
+
+First, we’ll override the default properties to set up a “boring” initial underline:
+
+
+    @supports (background: paint(extra-superUnderline)) {
+      h1 {
+        line-height: 1.5;
+        
+        --extra-underlineNumber: 5;
+        --extra-underlineColor: black;
+        --extra-underlineSpread: 0;
+        --extra-underlineWidth: 1;
+    
+        background: paint(extra-superUnderline);
+      }
+    }
+
+You may be wondering where I got the custom properties in the code above from, such as `--extra-underlineNumber`. These properties are defined *inside the paint worklet itself*. The paint worklet will check for those properties on every element where it is used, and it has default values built-in just in case they’re not explicitly set. You can see the same properties on Houdini.how for this worklet.
+
+By setting the `--extra-underlineSpread` to 0, we flattened the underline to create our initial "boring” underline. You should see something like this: 
+
+![](https://paper-attachments.dropbox.com/s_23AB5AA2479554ADB106A9A7BACF816F77AFE471478AA233FD476DDF686D2D1A_1610679544213_image.png)
+
+
+Next, we’ll add a hover-state with the lines more spread-out:
+
+
+    @supports (background: paint(extra-superUnderline)) {
+      h1 {
+       ....
+      }
+      h1:hover {
+        --extra-underlineSpread: 50;
+      }
+    }
+
+Now, if you hover over the H1 a few times, you’ll see a new Paint background with different underlines every time. But this effect is just flickering, it’s not smooth.
+
+Here’s the trick: **the custom properties which control the Painted image can be treated like any other CSS property.** This means **we can apply plain CSS transitions to those custom properties**, no different from height, margin, or any other property.
+
+Add a `transition` on the `--extra-underlineSpread` property like this:
+
+
+    @supports (background: paint(extra-superUnderline)) {
+      h1 {
+        ....
+        transition: --extra-underlineSpread 1s linear;
+      }
+      h1:hover {
+        --extra-underlineSpread: 50;
+      }
+    }
+
+Voila! When you hover over the H1 tag, you should see the lines transition from a single line to a spaced out set of lines, like this:
+
+
+![The result of animating the underline spacing](https://paper-attachments.dropbox.com/s_23AB5AA2479554ADB106A9A7BACF816F77AFE471478AA233FD476DDF686D2D1A_1610682673211_line_spacing.gif)
+
+## Accessibility
+
+Animations like these can change large parts of a page and add a lot of visual-load. We should always consider the impact that has on accessibility and usability when working with Paint animations.
+
+To make sure our Paint animations stay meet accessibility standards, we can use the `prefers-reduced-motion` media query to prevent the animations. You can either set the `prefers-reduced-motion` initial state to match the hover state, or vice verse: set the hover state to match the initial state. Here’s one example of this:
+
+
+    @supports (background: paint(extra-superUnderline)) {
+      h1 {
+        line-height: 1.5;
+    
+        --extra-underlineSpread: 0;
+        background: paint(extra-superUnderline);
+    
+        transition: --extra-underlineSpread 1s linear;
+      }
+      h1:hover {
+        --extra-underlineSpread: 50;
+      }
+      
+      /* Set initial state to match the more exciting ending state */
+      @media (prefers-reduced-motion: reduce) {
+        h1 {
+          --extra-underlineSpread: 50;
+        }
+      }
+    }
+
+
+## Taking it further
+
+We can use the Houdini Property API to define an animatable color. Then we can transition the line color just like the line spacing. Try this yourself to see the results!
+
+
+    @supports (background: paint(extra-superUnderline)) {
+      
+      @property --underline-color {
+        syntax: '<color>';
+        inherits: false;
+        initial-value: #000;
+      }
+    
+      h1 {
+        line-height: 1.5;
+    
+        --underline-color: black;
+        --extra-underlineColor: var(--underline-color);
+        --extra-underlineSpread: 0;
+        background: paint(extra-superUnderline);
+    
+        transition: --extra-underlineSpread 1s linear, --underline-color 1s ease-in-out;
+      }
+      h1:hover {
+        --extra-underlineSpread: 50;
+        --underline-color: deeppink;
+      }
+      ....
+    }
+
+A different option: instead of animating on hover, we could use a second class and a JavaScript timer to create passive animations:
+
+
+    <h1 class="timed-paint">Hello World!</h1>
+    
+    @supports (background: paint(extra-superUnderline)) {
+      h1 {
+        ....
+        --extra-underlineSpread: 0;
+        background: paint(extra-superUnderline);
+        transition: --extra-underlineSpread 1s linear;
+      }
+      h1.spaced {
+        --extra-underlineSpread: 50;
+      }
+      ...
+    }
+    
+    window.setInterval(() => {
+      document.querySelectorAll('.timed-paint')
+        .forEach(element => element.classList.toggle('spaced'))
+    }, 2000)
+
+We could also get more creative with the Paint worklet, use more complex transition functions, or use JavaScript to add more controls. The Houdini APIs give us a ton of creative freedom!
+
+*Thanks for reading! Follow my twitter* [*@ajones_codes*](https://twitter.com/ajones_codes) *and feel free to DM me for more info or questions.* 
+
+*A big thanks to* [*Una Kravetz*](https://twitter.com/Una) *for creating the underline Paint worklet.*
+
+
+
