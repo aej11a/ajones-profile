@@ -14,7 +14,7 @@ export default function Home() {
                 <div className="bg-gray-800 md:w-screen md:p-10 flex flex-col md:items-center md:justify-center">
                     <Card
                         title="Andrew Jones"
-                        subtitle={<span>Frontend developer with a specialty in research & development and project management. <a href='Andrew Jones Resume.pdf'>Download my resume</a> to learn about my experience, skills, and interests.</span>}
+                        subtitle={<span>Frontend developer with a specialty in research & development and project management.</span>}
                         sidebar={
                             <div>
                                 <br />
