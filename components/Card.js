@@ -4,9 +4,10 @@ export const Card = ({
   content,
   picSrc,
   picAlt,
+  picStyle,
   id,
   sidebar,
-}) => (
+}) => {console.log(picStyle);return (
   <div className="md:w-3/5 items-center flex shadow-xl" id={id}>
     <div className="bg-gray-200 rounded-lg flex flex-col md:flex-row w-full">
       <div className="m-6 md:w-3/5 xl:w-4/5">
@@ -26,11 +27,11 @@ export const Card = ({
             src={picSrc}
             alt={picAlt}
             className="md:object-scale-down w-full md:w-100 md:rounded-r-md"
-            style={{ maxWidth: "unset" }}
+            style={{ maxWidth: "unset", ...picStyle }}
           />
         </picture>
         {sidebar}
       </div>
     </div>
   </div>
-);
+)}

@@ -10,13 +10,13 @@ export default function AiChatInfo() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className="w-full">
         <div className="bg-gray-800 md:w-screen md:p-10 flex flex-col md:items-center md:justify-center">
           <Card
             title="Talk to Anyone - AI Chat App"
             id="aichat"
             picAlt="Screenshots of the artificial intelligence-powered chat app I created"
-            picSrc="ai-chat.png"
+            picSrc="/ai-chat.png"
             content={
               <>
                 <Technology disableConfetti>JavaScript</Technology>
@@ -37,9 +37,11 @@ export default function AiChatInfo() {
                   <br/>
                   This app is not live, but please see the videos below for two very different examples!
                 </p>
-                <h4>AI Chat with George Washington</h4>
+                <br/>
+                <h4 className="font-bold">AI Chat with George Washington</h4>
                 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/bSpu2Xz6a-k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <h4>AI Chat with Taylor Swift</h4>
+                <br/>
+                <h4 className="font-bold">AI Chat with Taylor Swift</h4>
                 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/oZ3KzsyNBTo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
               </>
             }

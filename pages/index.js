@@ -127,6 +127,7 @@ export default function Home() {
             id="covid"
             picAlt="Screenshots of the artificial intelligence-powered chat app I created"
             picSrc="ai-chat.png"
+            picStyle={{maxHeight: "350px", width: "auto", margin: "auto"}}
             content={
               <>
                 <Technology disableConfetti>JavaScript</Technology>
@@ -140,7 +141,7 @@ export default function Home() {
                   I created a chat app using React Native, powered by the OpenAI
                   GPT-3 API. I studied and experimented with the API to find the
                   right settings for the app. <br />
-                  Check out more details and two video demos{" "}
+                  Check out more details and two video demos
                   <Link href="/projects/ai-chat">here</Link>.
                 </p>
               </>
