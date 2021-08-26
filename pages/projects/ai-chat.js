@@ -1,7 +1,8 @@
+import Head from 'next/head'
 import { Card } from "../../components/Card";
 import { Technology } from "../../components/Technology";
 
-export default function Home() {
+export default function AiChatInfo() {
   return (
     <div className="container">
       <Head>

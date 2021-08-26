@@ -141,7 +141,7 @@ export default function Home() {
                   GPT-3 API. I studied and experimented with the API to find the
                   right settings for the app. <br />
                   Check out more details and two video demos{" "}
-                  <Link to="/projects/ai-chat">here</Link>.
+                  <Link href="/projects/ai-chat">here</Link>.
                 </p>
               </>
             }
