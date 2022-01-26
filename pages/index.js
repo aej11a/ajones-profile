@@ -24,11 +24,6 @@ export default function Home() {
             }
             sidebar={
               <div>
-                <br />
-                <p>Stevens Institute of Technology</p>
-                <p>B.E. Software Engineering</p>
-                <p>(expected) May 2022</p>
-                <br />
                 <p>
                   <img
                     src={"mail.svg"}
