@@ -272,7 +272,7 @@ export default function Home() {
                   Blueprints. While the assets came from an asset pack, I
                   created all of the logic for map generation, door movement,
                   coin creation, powerups, etc. I also created the particles
-                  using Cascade. The game now has over <b>4000 downloads</b>.
+                  using Cascade. The game now has over <b>11000 downloads</b>.
                 </p>
                 <a href="https://apps.apple.com/us/app/space-station-run/id1425634808">
                   Space Station: Run on the App Store
